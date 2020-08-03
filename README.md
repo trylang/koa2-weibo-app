@@ -36,3 +36,9 @@
 
 ## 安装redis 及使用
 - https://www.runoob.com/redis/redis-install.html
+
+
+## inspect 断点调试
+- dev 配置--inspect=9229
+- 启动`yarn run dev`
+- inspect 断点调试：打开chrome://inspect/#devices
