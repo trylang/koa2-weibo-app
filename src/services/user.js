@@ -1,7 +1,7 @@
 /*
  * @Author: Jane
  * @Date: 2020-08-06 19:12:17
- * @LastEditTime: 2020-08-06 20:41:10
+ * @LastEditTime: 2020-08-06 21:31:10
  * @LastEditors: Please set LastEditors
  * @Description: user services
  * @FilePath: \koa2-weibo-app\src\services\user.js
@@ -29,16 +29,28 @@ async function getUserInfo(userName, password) {
     where: whereOpt
   })
   // 未找到
-  console.log(result)
-  debugger
   if (result === null) return result;
-
   // 格式化
   const formatRes = formatUser(result.dataValues)
   return formatRes;
+}
 
+/**
+ * 创建用户
+ * @param {*} {userName, password, gender = 3, nickName}
+ * @returns
+ */
+async function createUser({userName, password, gender = 3, nickName}) {
+  const result = await User.create({
+    userName,
+    password,
+    nickName: nickName || userName,
+    gender
+  })
+  return result.dataValues
 }
 
 module.exports = {
-  getUserInfo
+  getUserInfo,
+  createUser
 }

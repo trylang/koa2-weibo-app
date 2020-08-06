@@ -1,15 +1,15 @@
 /*
  * @Author: Jane
  * @Date: 2020-08-06 19:00:16
- * @LastEditTime: 2020-08-06 20:40:51
+ * @LastEditTime: 2020-08-06 21:22:41
  * @LastEditors: Please set LastEditors
  * @Description: user contaoller
  * @FilePath: \koa2-weibo-app\src\controller\user.js
  */
 
-const { getUserInfo } = require('../services/user');
+const { getUserInfo, createUser } = require('../services/user');
 const { SuccessModel, ErrorModel } = require('../model/ResModel');
-const { registerUserNameNotExistInfo } = require('../model/ErrorInfo');
+const { registerUserNameNotExistInfo, registerFailInfo } = require('../model/ErrorInfo');
 
 /**
  * 用户名是否存在
@@ -25,6 +25,33 @@ async function isExist(userName) {
   }
 }
 
+/**
+ * 注册
+ * @param {*} {userName, password, gender}
+ * @returns
+ */
+async function register({userName, password, gender}) {
+  const userInfo = await getUserInfo(userName);
+  if (userInfo) {
+    return ErrorModel(registerUserNameNotExistInfo);
+  }
+
+  try {
+    await createUser({
+      userName,
+      password,
+      gender
+    })
+    return new SuccessModel()
+  } catch (ex) {
+    console.log(ex, ex.message, ex.stack);
+    return new ErrorModel(registerFailInfo)
+  }
+
+}
+
+
 module.exports = {
-  isExist
+  isExist,
+  register
 }
