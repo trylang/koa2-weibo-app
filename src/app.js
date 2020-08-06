@@ -10,9 +10,11 @@ const { REDIS_CONF } = require('./conf/db')
 const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 
-const errorViewRouter = require('./routes/view/error')
+const userAPIRouter = require('./routes/api/user')
+const userViewRouter = require('./routes/view/user')
 const index = require('./routes/index')
-const users = require('./routes/users')
+const errorViewRouter = require('./routes/view/error')
+
 
 // error handler
 const onerrorConf = {
@@ -58,7 +60,8 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
+app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
 app.use(errorViewRouter.routes(), errorViewRouter.allowedMethods()) // 404路由注册最下面
 
 // error-handling

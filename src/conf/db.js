@@ -15,7 +15,7 @@ let MYSQL_CONF = {
     user: 'root',
     password: 'l1111111',
     port: '3306',
-    database: 'koa2_weibo_db'
+    database: 'koa2-weibo-db'
 }
 
 if (isProd) {

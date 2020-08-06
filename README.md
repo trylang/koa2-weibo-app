@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-28 16:03:38
+ * @LastEditTime: 2020-08-06 19:09:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \koa2-weibo-app\README.md
+-->
 # koa2-weibo-app
 
 使用数据库 `use 数据库名;`
@@ -42,3 +50,29 @@
 - dev 配置--inspect=9229
 - 启动`yarn run dev`
 - inspect 断点调试：打开chrome://inspect/#devices
+
+
+
+## 技术方案-架构图
+
+1. routes
+   - 页面/view
+   - API
+   - 校验
+
+2. controller
+   - 业务逻辑
+   - 返回格式
+
+3. cache
+   - 公共信息
+   - redis
+
+4. service
+   - 数据处理
+   - 格式化
+
+5. db / sequelize
+   - 定义模型
+   - 封装操作
+   - MySQL
