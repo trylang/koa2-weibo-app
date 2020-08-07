@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-28 16:03:38
- * @LastEditTime: 2020-08-06 19:09:51
+ * @LastEditTime: 2020-08-07 21:20:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\README.md
@@ -76,3 +76,10 @@
    - 定义模型
    - 封装操作
    - MySQL
+
+## ajv - Another JSOn Schema Validator
+- `yarn add ajv`
+
+## **写中间件心得**
+- 中间件是返回一个函数，而且这个函数还是异步的。
+- 写中间件一定要注意：返回错误要写成ctx.body = xxx; 切不能直接return，否则不生效。

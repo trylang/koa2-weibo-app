@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-03 21:07:37
- * @LastEditTime: 2020-08-07 20:32:14
+ * @LastEditTime: 2020-08-07 21:12:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\src\routes\api\user.js
@@ -9,12 +9,13 @@
 const router = require('koa-router')();
 const { isExist, register } = require('../../controller/user');
 const { registerFailInfo } = require('../../model/ErrorInfo');
-
+const userValidate = require('../../validator/user');
+const { genValidator } = require('../../middlewares/validator');
 
 router.prefix('/api/user')
 
 // 注册路由
-router.post('/register', async(ctx, next) => {
+router.post('/register', genValidator(userValidate), async(ctx, next) => {
   const { userName, password, gendor} = ctx.request.body;
   ctx.body = await register({userName, password, gendor});
 })
