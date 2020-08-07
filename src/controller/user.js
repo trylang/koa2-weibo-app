@@ -1,7 +1,7 @@
 /*
  * @Author: Jane
  * @Date: 2020-08-06 19:00:16
- * @LastEditTime: 2020-08-06 21:22:41
+ * @LastEditTime: 2020-08-07 20:33:11
  * @LastEditors: Please set LastEditors
  * @Description: user contaoller
  * @FilePath: \koa2-weibo-app\src\controller\user.js
@@ -10,6 +10,9 @@
 const { getUserInfo, createUser } = require('../services/user');
 const { SuccessModel, ErrorModel } = require('../model/ResModel');
 const { registerUserNameNotExistInfo, registerFailInfo } = require('../model/ErrorInfo');
+const doCrypto = require('../utils/crypto');
+
+
 
 /**
  * 用户名是否存在
@@ -39,7 +42,7 @@ async function register({userName, password, gender}) {
   try {
     await createUser({
       userName,
-      password,
+      password: doCrypto(password),
       gender
     })
     return new SuccessModel()
