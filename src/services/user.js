@@ -1,7 +1,7 @@
 /*
  * @Author: Jane
  * @Date: 2020-08-06 19:12:17
- * @LastEditTime: 2020-08-06 21:31:10
+ * @LastEditTime: 2020-08-08 15:55:37
  * @LastEditors: Please set LastEditors
  * @Description: user services
  * @FilePath: \koa2-weibo-app\src\services\user.js
@@ -9,6 +9,7 @@
 
 const { User } = require('../db/model/index');
 const { formatUser } = require('./_format');
+const user = require('../controller/user');
 
 /**
  * 获取用户信息
@@ -21,7 +22,7 @@ async function getUserInfo(userName, password) {
     userName
   }
   if (password) {
-    Object.assign(whereOpt, password);
+    Object.assign(whereOpt, {password});
   }
   // 查询
   const result = await User.findOne({

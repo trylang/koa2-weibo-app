@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-08-03 20:48:00
- * @LastEditTime: 2020-08-06 20:06:10
- * @LastEditors: your name
+ * @LastEditTime: 2020-08-08 15:56:41
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\src\routes\view\user.js
  */
@@ -35,6 +35,7 @@ function getLoginInfo(ctx) {
 }
 
 router.get('/login', async (ctx, next) => {
+
     await ctx.render('login', getLoginInfo(ctx))
 })
 

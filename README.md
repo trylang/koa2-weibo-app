@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-28 16:03:38
- * @LastEditTime: 2020-08-07 21:20:00
+ * @LastEditTime: 2020-08-08 16:27:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\README.md
@@ -83,3 +83,17 @@
 ## **写中间件心得**
 - 中间件是返回一个函数，而且这个函数还是异步的。
 - 写中间件一定要注意：返回错误要写成ctx.body = xxx; 切不能直接return，否则不生效。
+
+## 启动redis
+- 在redis 文件夹下，先启动服务：`redis-server`;
+- 另开一个窗口，启动： `redis-cli`；
+- 查看所有redis，`keys *`;
+
+1. node中引入redis;
+   - 引入redis： `const redis = reqire('redis');`
+   - 连接服务：`const redisClient = redis.createClient(port,host)`;
+   - redis监听：`redisClient.on(xxx)`;
+
+- set 方法并设置过期时间：`redisClient.set(key, val); redisClient.expire(key, timeout)`;
+- get： `redisClinet.get(key)`;
+  > 这里取数据是异步，需要用到promise

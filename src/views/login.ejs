@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-31 18:26:11
+ * @LastEditTime: 2020-08-08 16:09:55
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \koa2-weibo-app\src\views\login.ejs
+-->
 <%- include('layout/header', { title: '微博 - 登录', isNarrow: true })%>
 
 <h1>登录</h1>
@@ -35,9 +43,11 @@
                         alert(err)
                         return
                     }
+                    console.log(data);
+                
                     // 跳转到指定 url 或首页
-                    var redirectUrl = $.query.get('url') || '/'
-                    location.href = redirectUrl
+                    // var redirectUrl = $.query.get('url') || '/'
+                    // location.href = redirectUrl
                 })
             })
         })
