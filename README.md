@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-28 16:03:38
- * @LastEditTime: 2020-08-08 16:27:54
+ * @LastEditTime: 2020-08-08 16:32:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\README.md
@@ -97,3 +97,28 @@
 - set 方法并设置过期时间：`redisClient.set(key, val); redisClient.expire(key, timeout)`;
 - get： `redisClinet.get(key)`;
   > 这里取数据是异步，需要用到promise
+
+### redis 用处
+0.什么是Redis
+Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API
+
+1.与其他用户状态保存方案比较
+一般开发中用户状态使用session或者cookie，两种方式各种利弊。
+
+Session:在InProc模式下容易丢失，并且引起并发问题。如果使用SQLServer或者SQLServer模式又消耗了性能
+
+Cookie则容易将一些用户信息暴露，加解密同样也消耗了性能。
+
+Redis采用这样的方案解决了几个问题，
+
+①.Redis存取速度快。
+
+②.用户数据不容易丢失。
+
+③.用户多的情况下容易支持集群。
+
+④.能够查看在线用户。
+
+⑤.能够实现用户一处登录。（通过代码实现，后续介绍）
+
+⑥.支持持久化。（当然可能没什么用）
