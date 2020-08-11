@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-08-03 20:48:00
- * @LastEditTime: 2020-08-08 15:56:41
+ * @LastEditTime: 2020-08-08 17:31:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \koa2-weibo-app\src\routes\view\user.js
@@ -12,7 +12,7 @@
  */
 
 const router = require('koa-router')()
-// const { loginRedirect } = require('../../middlewares/loginChecks')
+const { loginRedirect } = require('../../middlewares/loginCheck')
 
 /**
  * 获取登录信息
@@ -43,8 +43,8 @@ router.get('/register', async (ctx, next) => {
     await ctx.render('register', getLoginInfo(ctx))
 })
 
-// router.get('/setting', loginRedirect, async (ctx, next) => {
-//     await ctx.render('setting', ctx.session.userInfo)
-// })
+router.get('/setting', loginRedirect, async (ctx, next) => {
+    await ctx.render('setting', ctx.session.userInfo)
+})
 
 module.exports = router
